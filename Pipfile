@@ -5,9 +5,16 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-cleanup = "*"
+pillow = "*"
+pillow-pil = "*"
+bootstrap4 = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.10"
 python_full_version = "3.10.9"
+
+[pipenv]
+allow_prereleases = true
