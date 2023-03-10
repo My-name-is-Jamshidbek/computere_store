@@ -1,12 +1,34 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm, CategoryForm
 from django.views.generic import ListView
-from .models import Product
-from .models import Product, Category, Author
+# from .models import Product
+from .models import Product, Category, Author, Category
 
 
-# views.py
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'store/product_detail.html', {'product': product})
+#
+#
+# def product_list_by_category(request, slug):
+#     category = get_object_or_404(Category, name=slug)
+#     products = Product.objects.filter(category=category)
+#     return render(request, 'store/product/list.html', {'category': category, 'products': products})
+#
+
+def category_products(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    products = category.product_set.all()
+    return render(request, 'store/category_products.html', {'category': category, 'products': products})
+
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = 'store/category_list.html'
+    context_object_name = 'categories'
+
+
 def Add_CategoryView(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -32,7 +54,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'product_list.html'
     context_object_name = 'products'
-    
+
 def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
     self.fields['category'].queryset = Category.objects.all()

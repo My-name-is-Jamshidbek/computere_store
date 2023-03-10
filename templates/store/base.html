@@ -1,0 +1,15 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+  <div class="row">
+    {% for category in categories %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+<!--            <h4><a href="{% url 'store:product_list_by_category' category.slug %}">{{ category.name }}</a></h4>-->
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

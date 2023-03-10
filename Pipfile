@@ -6,9 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-cleanup = "*"
-pillow = "*"
-pillow-pil = "*"
-bootstrap4 = "*"
+python-resize-image = "*"
 
 [dev-packages]
 

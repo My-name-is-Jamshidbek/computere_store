@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     # personal apps
     'products',
 
     # other apps
     'django_cleanup',
-    'Pillow',
+    # 'python-resize-image',
 ]
                     
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'computer_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
