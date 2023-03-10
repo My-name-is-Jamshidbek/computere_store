@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     # personal apps
     'products',
+    'accounts',
 
     # other apps
     'django_cleanup',
@@ -132,3 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+# AUTH_USER_MODEL = 'accounts.CustomUeser'
+#
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'

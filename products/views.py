@@ -8,7 +8,14 @@ from .models import Product, Category, Author, Category
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    return render(request, 'store/product_detail.html', {'product': product})
+    return render(request, 'products/product/product_detail.html', {'product': product})
+
+
+def product_detail_category(request, id, category_id):
+    product = get_object_or_404(Product, id=id)
+    category = get_object_or_404(Category, id=category_id)
+    return render(request, 'products/product/product_detail.html', {'product': product, 'category': category})
+
 #
 #
 # def product_list_by_category(request, slug):
@@ -20,12 +27,12 @@ def product_detail(request, id):
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = category.product_set.all()
-    return render(request, 'store/category_products.html', {'category': category, 'products': products})
+    return render(request, 'products/category/category_products.html', {'category': category, 'products': products})
 
 
 class CategoryListView(ListView):
     model = Category
-    template_name = 'store/category_list.html'
+    template_name = 'products/category/category_list.html'
     context_object_name = 'categories'
 
 
@@ -37,7 +44,7 @@ def Add_CategoryView(request):
             return redirect('product_list')
     else:
         form = CategoryForm()
-    return render(request, 'add_category.html', {'form': form})
+    return render(request, 'products/category/add_category.html', {'form': form})
 
 def AddProductView(request):
     if request.method == 'POST':
@@ -47,12 +54,12 @@ def AddProductView(request):
             return redirect('product_list')
     else:
         form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})
+    return render(request, 'products/product/add_product.html', {'form': form})
 
 
 class ProductListView(ListView):
     model = Product
-    template_name = 'product_list.html'
+    template_name = 'products/product/product_list.html'
     context_object_name = 'products'
 
 def __init__(self, *args, **kwargs):
