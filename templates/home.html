@@ -2,11 +2,11 @@
 {% block title %}Bosh sahifa{% endblock title %}
 {% block content %}
     {% if user.is_authenticated %}
-        {{ user.username }}
-        <p><a href="{% url 'home' %}">Chiqish</a></p>
+        {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
     {% else %}
-        <p>saytga kirmagansiz</p>
-        <a href="{% url 'login' %}">login</a>
-        <a href="{% url 'signup' %}">signup</a>
+        <p>Saytga kirmagansiz</p>
+        <a href="{% url 'login' %}">Kirish</a> |
+        <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
     {% endif %}
 {% endblock content %}

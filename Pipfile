@@ -5,14 +5,9 @@ name = "pypi"
 
 [packages]
 django = "*"
-django-cleanup = "*"
-python-resize-image = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
-python_full_version = "3.10.9"
-
-[pipenv]
-allow_prereleases = true
+python_version = "3.9"

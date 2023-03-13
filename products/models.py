@@ -17,6 +17,13 @@ class Author(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
+class Photo(models.Model):
+    image = models.ImageField(upload_to='products/', null=True, blank=True)
+
+    def __str__(self):
+        return self.image.name
+
+
 class Product(models.Model):
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
@@ -24,7 +31,7 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to='products/', blank=True, null=True)
+    photo = models.ManyToManyField(Photo, blank=True)
 
     def __str__(self):
         return f'{self.brand} {self.model}'

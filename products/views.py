@@ -16,13 +16,6 @@ def product_detail_category(request, id, category_id):
     category = get_object_or_404(Category, id=category_id)
     return render(request, 'products/product/product_detail.html', {'product': product, 'category': category})
 
-#
-#
-# def product_list_by_category(request, slug):
-#     category = get_object_or_404(Category, name=slug)
-#     products = Product.objects.filter(category=category)
-#     return render(request, 'store/product/list.html', {'category': category, 'products': products})
-#
 
 def category_products(request, category_id):
     category = get_object_or_404(Category, id=category_id)
