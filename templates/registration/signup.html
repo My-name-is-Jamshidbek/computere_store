@@ -4,6 +4,7 @@
   <h2>Ro'yxatdan o'tish</h2>
   <form method="post">
     {% csrf_token %}
+        <a href="{% url 'login' %}">login</a>
     {{ form.username.label_tag }}
     {{ form.username }}
     {{ form.password1.label_tag }}
