@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # personal apps
     'products',
     'accounts',
+    'pages',
 
     # other apps
     'django_cleanup',

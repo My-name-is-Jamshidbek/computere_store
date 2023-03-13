@@ -3,7 +3,8 @@
 {% block content %}
     {% if user.is_authenticated %}
         {{ user.username }}
-        <p><a href="{% url 'home' %}">Chiqish</a></p>
+        <a href="{% url 'password_change' %}">parolni o'zgartirish</a>
+        <a href="{% url 'logout' %}">logout</a>
     {% else %}
         <p>saytga kirmagansiz</p>
         <a href="{% url 'login' %}">login</a>
