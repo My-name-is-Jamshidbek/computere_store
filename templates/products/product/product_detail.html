@@ -7,6 +7,8 @@
         <img src="{{ product.photo.url }}" class="img-fluid">
       </div>
       <div class="col-lg-6">
+        {{ product.photo }}
+        <h1>{{ product.author }}</h1>
         <h1>{{ product.brand }} {{ product.model }}</h1>
         <h2>${{ product.price }}</h2>
         <p>{{ product.description }}</p>

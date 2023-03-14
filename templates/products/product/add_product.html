@@ -3,9 +3,39 @@
 
 {% block content %}
   <h2>Add Product</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Product</button>
-  </form>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="brand">Brand:</label>
+  <input type="text" id="brand" name="brand" required>
+
+  <label for="model">Model:</label>
+  <input type="text" id="model" name="model" required>
+
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price" required>
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required></textarea>
+
+  <label for="category">Category:</label>
+  <select id="category" name="category" required>
+    {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="author">Author:</label>
+  <select id="author" name="author" required>
+    {% for aut in authors %}
+      <option value="{{ aut.id }}">{{ aut.first_name }} {{ aut.last_name }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="photos">Photos:</label>
+  <input type="file" id="photos" name="photos">
+
+
+  <button type="submit">Add Product</button>
+</form>
+
 {% endblock %}

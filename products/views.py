@@ -1,7 +1,9 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+
 from .forms import ProductForm, CategoryForm
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 # from .models import Product
 from .models import Product, Category, Author, Category
 
@@ -39,16 +41,18 @@ def Add_CategoryView(request):
         form = CategoryForm()
     return render(request, 'products/category/add_category.html', {'form': form})
 
-def AddProductView(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('product_list')
-    else:
-        form = ProductForm()
-    return render(request, 'products/product/add_product.html', {'form': form})
 
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ['brand', 'model', 'price', 'description', 'category', 'author', 'photo']
+    template_name = 'products/product/add_product.html'
+    success_url = reverse_lazy('product_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['authors'] = Author.objects.all()
+        return context
 
 class ProductListView(ListView):
     model = Product
