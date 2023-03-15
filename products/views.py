@@ -5,12 +5,14 @@ from django.urls import reverse_lazy
 from .forms import ProductForm, CategoryForm
 from django.views.generic import ListView, CreateView
 # from .models import Product
-from .models import Product, Category, Author, Category
+from .models import Product, Category, Author, Category, Photo
 
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    return render(request, 'products/product/product_detail.html', {'product': product})
+    product_ = Product.objects.get(id=product.pk)
+    photos = Photo.objects.filter(product=product_)
+    return render(request, 'products/product/product_detail.html', {'product': product, 'photos': photos})
 
 
 def product_detail_category(request, id, category_id):
@@ -42,17 +44,41 @@ def Add_CategoryView(request):
     return render(request, 'products/category/add_category.html', {'form': form})
 
 
-class ProductCreateView(CreateView):
-    model = Product
-    fields = ['brand', 'model', 'price', 'description', 'category', 'author', 'photo']
-    template_name = 'products/product/add_product.html'
-    success_url = reverse_lazy('product_list')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['authors'] = Author.objects.all()
-        return context
+def ProductCreate(request):
+    if request.method == 'POST':
+        brand = request.POST.get('brand')
+        model = request.POST.get('model')
+        price = request.POST.get('price')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+        photos = request.FILES.getlist('photos')
+        category_id = request.POST.get('category')
+        author_id = request.POST.get('author')
+        category = Category.objects.get(id=category_id)
+        author = Author.objects.get(id=author_id)
+        product = Product(brand=brand, model=model, price=price, description=description, image=image, category=category, author=author)
+        product.save()
+
+        product_ = Product.objects.get(id=product.pk)
+
+        # Add any uploaded photos to the new Product object
+        if photos:
+            print(photos)
+            for photo in photos:
+                print(photo)
+                new_photo = Photo(image=photo, product=product_)
+                new_photo.save()
+
+        return redirect('product_detail', id=product.pk)
+    categories = Category.objects.all()
+    authors = Author.objects.all()
+    context = {
+        'categories': categories,
+        'authors': authors
+    }
+    # Render the form for creating a new product
+    return render(request, 'products/product/add_product.html', context)
 
 class ProductListView(ListView):
     model = Product

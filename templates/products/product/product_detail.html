@@ -4,10 +4,16 @@
   <div class="container my-5">
     <div class="row">
       <div class="col-lg-6">
-        <img src="{{ product.photo.url }}" class="img-fluid">
-      </div>
-      <div class="col-lg-6">
-        {{ product.photo }}
+        <p>asosiy rasm</p>
+        {{ product.image.url }}
+        <img src="{{ product.image.url }}" class="img-fluid">
+        <p>qo'shimcha rasmlar</p>
+        {% for photo in photos.all %}
+        {{ photo.image }}
+        <img src="{{ photo.image.url }}" class="img-fluid">
+        {% empty %}
+          <li>No photos yet.</li>
+        {% endfor %}
         <h1>{{ product.author }}</h1>
         <h1>{{ product.brand }} {{ product.model }}</h1>
         <h2>${{ product.price }}</h2>

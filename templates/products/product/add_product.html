@@ -3,40 +3,42 @@
 
 {% block content %}
   <h2>Add Product</h2>
-<form method="POST" enctype="multipart/form-data">
+<!-- product_create.html -->
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <label for="brand">Brand:</label>
-  <input type="text" id="brand" name="brand" required>
+  <input type="text" id="brand" name="brand"><br>
 
   <label for="model">Model:</label>
-  <input type="text" id="model" name="model" required>
+  <input type="text" id="model" name="model"><br>
 
   <label for="price">Price:</label>
-  <input type="number" id="price" name="price" required>
+  <input type="number" id="price" name="price"><br>
 
   <label for="description">Description:</label>
-  <textarea id="description" name="description" required></textarea>
+  <textarea id="description" name="description"></textarea><br>
 
   <label for="category">Category:</label>
-  <select id="category" name="category" required>
+  <select id="category" name="category">
     {% for category in categories %}
       <option value="{{ category.id }}">{{ category.name }}</option>
     {% endfor %}
-  </select>
+  </select><br>
 
   <label for="author">Author:</label>
-  <select id="author" name="author" required>
-    {% for aut in authors %}
-      <option value="{{ aut.id }}">{{ aut.first_name }} {{ aut.last_name }}</option>
+  <select id="author" name="author">
+    {% for author in authors %}
+      <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
     {% endfor %}
+  </select><br>
 
-  </select>
+  <label for="image">Photo: asosiy rasm</label>
+  <input type="file" id="image" name="image"><br>
 
-  <label for="Photo">Photos:</label>
-  <input type="file" id="Photo" name="Photo">
+  <label for="photos">Additional Photos:</label>
+  <input type="file" id="photos" name="photos" multiple><br>
 
-
-  <button type="submit">Add Product</button>
+  <input type="submit" value="Create">
 </form>
 
 {% endblock %}

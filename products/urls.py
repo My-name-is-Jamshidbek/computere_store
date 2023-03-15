@@ -8,7 +8,7 @@ from django.conf.urls.static import static
                                
 urlpatterns = [
     # product
-    path('add/', views.ProductCreateView.as_view(), name='add_product'),
+    path('add/', views.ProductCreate, name='add_product'),
     path('', views.ProductListView.as_view(), name='product_list'),
     path('<int:id>/', views.product_detail, name='product_detail'),
 
