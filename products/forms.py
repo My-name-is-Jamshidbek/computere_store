@@ -6,12 +6,13 @@ from .models import Product, Category, Author
 
 
 class ProductForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects.all())
-    author = forms.ModelChoiceField(queryset=Author.objects.all())
-
     class Meta:
         model = Product
-        fields = ('brand', 'model', 'price', 'description', 'category', 'author', 'photo')
+        fields = ['brand', 'model', 'price', 'description', 'category', 'author', 'photo']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4}),
+        }
+
 
 class CategoryForm(forms.ModelForm):
     class Meta:
