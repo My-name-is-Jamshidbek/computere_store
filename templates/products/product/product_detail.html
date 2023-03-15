@@ -4,20 +4,27 @@
   <div class="container my-5">
     <div class="row">
       <div class="col-lg-6">
-        <p>asosiy rasm</p>
-        {{ product.image.url }}
-        <img src="{{ product.image.url }}" class="img-fluid">
-        <p>qo'shimcha rasmlar</p>
-        {% for photo in photos.all %}
-        {{ photo.image }}
-        <img src="{{ photo.image.url }}" class="img-fluid">
-        {% empty %}
-          <li>No photos yet.</li>
-        {% endfor %}
-        <h1>{{ product.author }}</h1>
+        <div class="main-image">
+          <img src="{{ product.image.url }}" class="img-fluid">
+        </div>
+        <div class="additional-images">
+          {% for photo in photos.all %}
+            <img src="{{ photo.image.url }}" class="img-fluid">
+          {% empty %}
+            <p>No additional photos available.</p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-6">
         <h1>{{ product.brand }} {{ product.model }}</h1>
         <h2>${{ product.price }}</h2>
         <p>{{ product.description }}</p>
+<form method="POST" action="{% url 'add_to_cart' product_id=product.id %}">
+  {% csrf_token %}
+  <input type="hidden" name="product_id" value="{{ product.id }}">
+  <button type="submit">Add to Cart</button>
+</form>
+
       </div>
     </div>
   </div>
