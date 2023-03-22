@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Installment Plans</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Months</th>
+        <th>Percentage</th>
+        <th>Minimum Money</th>
+        <th>Maximum Money</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for installment in installments %}
+        <tr>
+          <td>{{ installment.name }}</td>
+          <td>{{ installment.months }}</td>
+          <td>{{ installment.percentage }}%</td>
+          <td>{{ installment.minimum_money }}</td>
+          <td>{{ installment.maximum_money }}</td>
+          <td>
+            <a href="{% url 'installment_edit' installment.pk %}">Edit</a>
+            <a href="{% url 'installment_delete' installment.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="6">No installment plans available.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'installment_new' %}" class="btn btn-primary">New Installment Plan</a>
+{% endblock %}

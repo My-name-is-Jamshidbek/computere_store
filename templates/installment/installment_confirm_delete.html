@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Installment Plan</h1>
+  <p>Are you sure you want to delete the "{{ installment.name }}" installment plan?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="{% url 'installment_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}

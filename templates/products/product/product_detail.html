@@ -1,4 +1,4 @@
-{% extends 'products/product/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
   <div class="container my-5">
@@ -19,12 +19,23 @@
         <h1>{{ product.brand }} {{ product.model }}</h1>
         <h2>${{ product.price }}</h2>
         <p>{{ product.description }}</p>
-<form method="POST" action="{% url 'add_to_cart' product_id=product.id %}">
-  {% csrf_token %}
-  <input type="hidden" name="product_id" value="{{ product.id }}">
-  <button type="submit">Add to Cart</button>
-</form>
-
+        <form method="POST" action="{% url 'add_to_cart' product_id=product.id %}">
+          {% csrf_token %}
+          <input type="hidden" name="product_id" value="{{ product.id }}">
+          <button type="submit">Add to Cart</button>
+        </form>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          {% for comment in product.comments.all %}
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>{{ comment }}</p>
+                <footer class="blockquote-footer">{{ comment.author }}</footer>
+              </blockquote>
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
