@@ -1,10 +1,20 @@
-{% extends 'base.html' %}
-{% block title %}Ro'yxatdan o'tish{% endblock title %}
-
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Ro'yxatdan o'tish
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'registeation/login.css' %}" />
+{% endblock style %} 
 {% block content %}
-    <h2>Ro'yxatdan o'tish</h2>
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Yuborish</button>
-    </form>
+<section class="main-section">
+    <div class="container">
+        <p>Ro'yxatdan o'tish</p>
+        <div class="email-div">
+            <input type="email" placeholder="Email">
+        </div>
+        <div class="parol-div">
+            <input type="parol" placeholder="Parol">
+        </div>
+    </div>
+</section>
 {% endblock content %}

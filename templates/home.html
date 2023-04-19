@@ -1,12 +1,77 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Bosh sahifa{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock style %}
 {% block content %}
-    {% if user.is_authenticated %}
-        {{ user.username }}!
-        <p><a href="{% url 'logout' %}">Chiqib ketish</a></p>
-    {% else %}
-        <p>Saytga kirmagansiz</p>
-        <a href="{% url 'login' %}">Kirish</a> |
-        <a href="{% url 'signup' %}">Ro'yxatdan o'tish</a>
-    {% endif %}
+<section class="main-section">
+  <div class="main-left-div">
+    <ul class="main-ul-left">
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+      <li>
+        <a href="product_items.html" class="kategories-item"
+          >Quloqchinlar</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="main-right-div">
+    <div class="main-items">
+      {% for category in category_list %}
+        <div class="main-item">
+          <div class="product-image-item">
+            <a href="{% url 'category_products' category_id=category.id %}">
+              <img
+                src="{{ category.photo.url }}"
+                alt="product-image"
+                class="products-image"
+              />
+            </a>
+            <a href="{% url 'category_products' category_id=category.id %}" class="products-name"
+              ><p>{{ category.name }}</p></a
+            >
+          </div>
+        </div>
+      {% empty %}
+      <h1>Mahsulotlar mavjud emas!</h1>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 {% endblock content %}

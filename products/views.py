@@ -18,7 +18,8 @@ def product_detail(request, id):
 def product_detail_category(request, id, category_id):
     product = get_object_or_404(Product, id=id)
     category = get_object_or_404(Category, id=category_id)
-    return render(request, 'products/product/product_detail.html', {'product': product, 'category': category})
+    photos = Photo.objects.filter(product=product)
+    return render(request, 'products/product/product_detail.html', {'product': product, 'category': category, 'photos': photos})
 
 
 def category_products(request, category_id):
