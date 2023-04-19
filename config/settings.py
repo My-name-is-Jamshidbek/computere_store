@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # tashqi app
-    'crispy_forms',
+    # 'crispy_forms',
     # men o'zim yaratgan applar
     'accounts',
     'pages',

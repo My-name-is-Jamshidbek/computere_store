@@ -1,0 +1,174 @@
+* {
+    font-family: "Times New Roman", Times, serif;
+    box-sizing: border-box;
+  }
+  
+  .product-div {
+    display: flex;
+    align-items: start;
+    padding: 20px;
+  }
+  
+  .product-image {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .product-info {
+    width: 50%;
+  }
+  
+  .product-image-slider-show{
+      width: 550px;
+      height: 500px;
+      border-radius: 10px;
+  }
+  
+  .mySlides {
+    display: none;
+    background: rgba(55, 71, 90, 1);
+    padding: 2px;
+    border-radius: 10px;
+  }
+  img {
+    vertical-align: middle;
+  }
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #000;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .text {
+      font-size: 11px;
+    }
+  }
+  
+  .product-info{
+    padding: 50px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  }
+  
+  .product-info-right-title{
+    font-size: 30px;
+  }
+  
+  .old-price{
+    font-size: 25px;
+    padding: 20px 0;
+    color: #cccaca;
+  }
+  
+  .new-price{
+    font-size: 35px;
+    color: rgb(255,147,7);
+    padding-bottom: 20px;
+  }
+  
+  
+  .follow-and-cart-icons{
+    padding: 5px 0 10px 0 ;
+  }
+  
+  .follow-and-cart-icons svg{
+    width: 20px;
+    height: 20px;
+    color: rgb(255,147,7);
+    cursor: pointer;
+  }
+  
+  .follow-item-icons{
+    margin-right: 5px;
+  }
+  
+  .product-info ul{
+    padding-left: 20px;
+  }
+  
+  .product-info ul li{
+    padding: 5px 0;
+  }
+  
+  .product-btns{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .product-btns button{
+    border-radius: 20px;
+    background: rgb(255,147,7);
+    color: #fff;
+    border: 2px solid rgb(255,147,7);
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  .product-btn{
+    margin-left: 10px;
+  }
+  
+  .product-btns button:hover{
+    color: rgb(255,147,7);
+    background: #fff;
+  }
