@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Your like</h1>
+  {% if like_products %}
+    <table>
+      <thead>
+        <tr>  
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for like_product in like_products %}
+          <tr>
+            <td>{{ like_product.product }}</td>
+            <td>{{ like_product.product.price }}</td>
+            <td>{{ like_product.quantity }}</td>
+            <td>{{ like_product.product.total_price }}</td>
+            <td>
+              <form action="{% url 'delete_like_product' like_product.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="3"></td>
+          <td>Total:</td>
+          <td>{{ like_total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  {% else %}
+    <p>Your like is empty.</p>
+  {% endif %}
+{% endblock %}

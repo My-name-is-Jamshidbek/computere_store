@@ -31,7 +31,7 @@ def cart_detail_view(request):
         'cart_products': cart_products,
         'cart_total': str(cart_total)
     }
-    return render(request, 'cart/cart_detail.html', context)
+    return render(request, 'cart/like_detail.html', context)
 
 
 def get_cart_data(user):
