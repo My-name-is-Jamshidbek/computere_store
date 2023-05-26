@@ -8,46 +8,13 @@
 <section class="main-section">
   <div class="main-left-div">
     <ul class="main-ul-left">
+      {% for category in category_list %}
       <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
+        <a href="{% url 'category_products' category_id=category.id %}" class="kategories-item"
+          >{{ category.name }}</a
         >
       </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
-      <li>
-        <a href="product_items.html" class="kategories-item"
-          >Quloqchinlar</a
-        >
-      </li>
+      {% endfor %}
     </ul>
   </div>
   <div class="main-right-div">
